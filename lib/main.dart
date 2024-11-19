@@ -11,7 +11,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -41,13 +40,11 @@ class _EKYCNativeScreenState extends State<EKYCNativeScreen> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
-        child: UiKitView(
-            viewType: viewType,
-            creationParams: creationParams,
-            layoutDirection: TextDirection.ltr,
-            creationParamsCodec: const StandardMessageCodec()),
-      ),
+      body: UiKitView(
+          viewType: viewType,
+          creationParams: creationParams,
+          layoutDirection: TextDirection.ltr,
+          creationParamsCodec: const StandardMessageCodec()),
     );
   }
 }

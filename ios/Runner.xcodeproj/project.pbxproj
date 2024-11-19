@@ -14,6 +14,11 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		E62BFF4B2CEC9BC0004B4AD2 /* ResultEkycViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62BFF4A2CEC9BC0004B4AD2 /* ResultEkycViewController.swift */; };
+		E62BFF4F2CEC9CD9004B4AD2 /* ResultEkycCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62BFF4E2CEC9CD9004B4AD2 /* ResultEkycCell.swift */; };
+		E62BFF512CEC9D0A004B4AD2 /* ResultEkycCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E62BFF502CEC9D0A004B4AD2 /* ResultEkycCell.xib */; };
+		E62BFF542CEC9D42004B4AD2 /* ResultEkycHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62BFF532CEC9D42004B4AD2 /* ResultEkycHeader.swift */; };
+		E62BFF562CEC9D5E004B4AD2 /* ResultEkycHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E62BFF552CEC9D5E004B4AD2 /* ResultEkycHeader.xib */; };
 		F2FC8A3C2CE25F2700E5DA02 /* eKYCLib.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FC8A372CE25BF900E5DA02 /* eKYCLib.xcframework */; };
 		F2FC8A3D2CE25F2700E5DA02 /* eKYCLib.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2FC8A372CE25BF900E5DA02 /* eKYCLib.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F2FC8A3E2CE25F2900E5DA02 /* ICSdkEKYC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FC8A362CE25BF900E5DA02 /* ICSdkEKYC.xcframework */; };
@@ -64,6 +69,11 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E62BFF4A2CEC9BC0004B4AD2 /* ResultEkycViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultEkycViewController.swift; sourceTree = "<group>"; };
+		E62BFF4E2CEC9CD9004B4AD2 /* ResultEkycCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultEkycCell.swift; sourceTree = "<group>"; };
+		E62BFF502CEC9D0A004B4AD2 /* ResultEkycCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResultEkycCell.xib; path = ../../../../../../Downloads/ResultEkycCell.xib; sourceTree = "<group>"; };
+		E62BFF532CEC9D42004B4AD2 /* ResultEkycHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultEkycHeader.swift; sourceTree = "<group>"; };
+		E62BFF552CEC9D5E004B4AD2 /* ResultEkycHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResultEkycHeader.xib; path = ../../../../../../Downloads/ResultEkycHeader.xib; sourceTree = "<group>"; };
 		F2FC8A362CE25BF900E5DA02 /* ICSdkEKYC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ICSdkEKYC.xcframework; sourceTree = "<group>"; };
 		F2FC8A372CE25BF900E5DA02 /* eKYCLib.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = eKYCLib.xcframework; sourceTree = "<group>"; };
 		F2FC8A402CEB3AEE00E5DA02 /* EkycView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EkycView.swift; sourceTree = "<group>"; };
@@ -125,6 +135,8 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				E62BFF4C2CEC9C11004B4AD2 /* Result */,
+				E62BFF492CEC8915004B4AD2 /* SdksEkyc */,
 				F2FC8A3A2CE25C7B00E5DA02 /* eKYC */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
@@ -139,11 +151,46 @@
 			path = Runner;
 			sourceTree = "<group>";
 		};
-		F2FC8A3A2CE25C7B00E5DA02 /* eKYC */ = {
+		E62BFF492CEC8915004B4AD2 /* SdksEkyc */ = {
 			isa = PBXGroup;
 			children = (
 				F2FC8A372CE25BF900E5DA02 /* eKYCLib.xcframework */,
 				F2FC8A362CE25BF900E5DA02 /* ICSdkEKYC.xcframework */,
+			);
+			path = SdksEkyc;
+			sourceTree = "<group>";
+		};
+		E62BFF4C2CEC9C11004B4AD2 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				E62BFF522CEC9D24004B4AD2 /* ResultEkycHeader */,
+				E62BFF4D2CEC9CB5004B4AD2 /* ResultEkycCell */,
+				E62BFF4A2CEC9BC0004B4AD2 /* ResultEkycViewController.swift */,
+			);
+			path = Result;
+			sourceTree = "<group>";
+		};
+		E62BFF4D2CEC9CB5004B4AD2 /* ResultEkycCell */ = {
+			isa = PBXGroup;
+			children = (
+				E62BFF502CEC9D0A004B4AD2 /* ResultEkycCell.xib */,
+				E62BFF4E2CEC9CD9004B4AD2 /* ResultEkycCell.swift */,
+			);
+			path = ResultEkycCell;
+			sourceTree = "<group>";
+		};
+		E62BFF522CEC9D24004B4AD2 /* ResultEkycHeader */ = {
+			isa = PBXGroup;
+			children = (
+				E62BFF552CEC9D5E004B4AD2 /* ResultEkycHeader.xib */,
+				E62BFF532CEC9D42004B4AD2 /* ResultEkycHeader.swift */,
+			);
+			path = ResultEkycHeader;
+			sourceTree = "<group>";
+		};
+		F2FC8A3A2CE25C7B00E5DA02 /* eKYC */ = {
+			isa = PBXGroup;
+			children = (
 				F2FC8A402CEB3AEE00E5DA02 /* EkycView.swift */,
 				F2FC8A422CEB3C1900E5DA02 /* EkycViewFactory.swift */,
 			);
@@ -241,8 +288,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E62BFF512CEC9D0A004B4AD2 /* ResultEkycCell.xib in Resources */,
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
+				E62BFF562CEC9D5E004B4AD2 /* ResultEkycHeader.xib in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 			);
@@ -299,9 +348,12 @@
 			files = (
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
+				E62BFF4F2CEC9CD9004B4AD2 /* ResultEkycCell.swift in Sources */,
 				F2FC8A452CEB475E00E5DA02 /* FLPlugin.swift in Sources */,
 				F2FC8A412CEB3AEE00E5DA02 /* EkycView.swift in Sources */,
+				E62BFF542CEC9D42004B4AD2 /* ResultEkycHeader.swift in Sources */,
 				F2FC8A432CEB3C1900E5DA02 /* EkycViewFactory.swift in Sources */,
+				E62BFF4B2CEC9BC0004B4AD2 /* ResultEkycViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
