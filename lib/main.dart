@@ -30,21 +30,34 @@ class EKYCNativeScreen extends StatefulWidget {
 }
 
 class _EKYCNativeScreenState extends State<EKYCNativeScreen> {
+
+  static const platform = MethodChannel('flutter.sdk.ekyc/integrate');
+
+
+  Future<void> _getDataEkyc() async {
+    try {
+      final result = await platform.invokeMethod('startEkycFull',);
+    } on PlatformException catch (e) {
+      print("HieuNV Failed: '${e.message}");
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
-    const String viewType = 'ekyc-view';
-    final Map<String, dynamic> creationParams = <String, dynamic>{};
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: UiKitView(
-          viewType: viewType,
-          creationParams: creationParams,
-          layoutDirection: TextDirection.ltr,
-          creationParamsCodec: const StandardMessageCodec()),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            _getDataEkyc();
+          },
+          child: const Text("eKYC Native Screen"),
+        ),
+      ),
     );
   }
 }
