@@ -25,11 +25,6 @@ import ICSdkEKYC
             // Note: this method is invoked on the UI thread.
             // Handle battery messages.
             self.methodChannel = result
-            // print(self.convertToDictionary(text: info))
-            // input key - get from flutter
-            ICEKYCSavedData.shared().tokenId = ""
-//            ICEKYCSavedData.shared().tokenKey = ""
-//            ICEKYCSavedData.shared().authorization = ""
         
             DispatchQueue.main.async {
                 if call.method == "startEkycFull" {
@@ -47,10 +42,14 @@ import ICSdkEKYC
     /// Luồng đầy đủ: Ocr + Face
     /// - Parameter controller: root viewcontroller
     func startEkycFull(_ controller: UIViewController) {
-        print("HieuV")
         let camera = ICEkycCameraRouter.createModule() as! ICEkycCameraViewController
         
         camera.cameraDelegate = self
+        camera.backgroundColorCaptureDocumentScreen = .orange
+        
+        camera.tokenId = "27f12144-0167-6516-e063-63199f0a2960"
+        camera.tokenKey = "MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBANCXrV9sZ23HnW81wVDh87GrzBUiAWRRY4HJ8mte+J2wrBjCdgUk1Kmo1fG/J+9FNIr7EConECrSl6zhz1TcJuUCAwEAAQ=="
+        camera.accessToken = "bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNWVjNjU4Ni05MGU1LTExZWYtYTQwZi1jZmMwMGFjMWNkNmIiLCJhdWQiOlsicmVzdHNlcnZpY2UiXSwidXNlcl9uYW1lIjoiaGlldW52MjMwNjk5QGdtYWlsLmNvbSIsInNjb3BlIjpbInJlYWQiXSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3QiLCJuYW1lIjoiaGlldW52MjMwNjk5QGdtYWlsLmNvbSIsImV4cCI6MTczMjg0NjgxMSwidXVpZF9hY2NvdW50IjoiZTVlYzY1ODYtOTBlNS0xMWVmLWE0MGYtY2ZjMDBhYzFjZDZiIiwiYXV0aG9yaXRpZXMiOlsiVVNFUiJdLCJqdGkiOiJkMmE2YzJmNS1jMzRhLTQ1OTctOTY3Mi0xYzRkMjZhZTVkMWYiLCJjbGllbnRfaWQiOiJjbGllbnRhcHAifQ.jh_U8VUHKSwGno1uBn6ZsSsc0-Q38IRBflft52DGf1KXYEeqszJoFAbb4CI-5gPGCVjUcz8Xxem9OTaiCiOwNydN7TPc-cJkTlNQCuLd2ZB5kSkieFeyx6LXcXZQiQAaltFXeIggebekZbbA1aZpz8miiFhNkbKbbQEXfh_P34rN6j5dpdCq2L78TXlhsVZ2qu82EYWnD7b2Fk7hQl7f56mayy-9HRWY-JApsNK7_BC7xo4m7o5AEmE4rhNRre8gfc0889KdhVKZns-qaLD_5cVkm1GVX7Ak0Z_L-NCPGmAK2Rzs-gLom4FALbZ35snzay3fcaz9qI6x99Wy17nlEg"
         
         /// Giá trị này xác định kiểu giấy tờ để sử dụng:
         /// - IDENTITY_CARD: Chứng minh thư nhân dân, Căn cước công dân
@@ -82,7 +81,7 @@ import ICSdkEKYC
         /// - Basic: Kiểm tra sau khi chụp ảnh
         /// - MediumFlip: Kiểm tra ảnh hợp lệ trước khi chụp (lật giấy tờ thành công → hiển thị nút chụp)
         /// - Advance: Kiểm tra ảnh hợp lệ trước khi chụp (hiển thị nút chụp)
-        camera.validateDocumentType = Basic
+        camera.validateDocumentType = Advance
         
         /// Giá trị này xác định việc có xác thực số ID với mã tỉnh thành, quận huyện, xã phường tương ứng hay không.
         camera.isValidatePostcode = true
@@ -102,10 +101,13 @@ import ICSdkEKYC
         camera.languageSdk = "vi"
         
         /// Bật/Tắt Hiển thị màn hình hướng dẫn
-        camera.isShowTutorial = true
+        camera.isShowTutorial = false
         
         /// Bật chức năng hiển thị nút bấm "Bỏ qua hướng dẫn" tại các màn hình hướng dẫn bằng video
         camera.isEnableGotIt = true
+        
+        camera.isRecordVideoFace = true;
+        camera.isRecordVideoDocument = true;
         
         /// Sử dụng máy ảnh mặt trước
         /// - PositionFront: Camera trước
@@ -120,7 +122,7 @@ import ICSdkEKYC
 
 extension AppDelegate: ICEkycCameraDelegate {
     func icEkycGetResult() {
-        UIDevice.current.isProximityMonitoringEnabled = false /// tắt cảm biến làm tối màn hình
+        UIDevice.current.isProximityMonitoringEnabled = true /// tắt cảm biến làm tối màn hình
         let dataInfoResult = ICEKYCSavedData.shared().ocrResult
         let dataLivenessCardFrontResult = ICEKYCSavedData.shared().livenessCardFrontResult
         let dataLivenessCardRearResult = ICEKYCSavedData.shared().livenessCardBackResult

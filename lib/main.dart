@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -36,7 +38,8 @@ class _EKYCNativeScreenState extends State<EKYCNativeScreen> {
 
   Future<void> _getDataEkyc() async {
     try {
-      final result = await platform.invokeMethod('startEkycFull',);
+      final result = await platform.invokeMethod('startEkycFull');
+      print('HieuNV Success: ${jsonDecode(result)}');
     } on PlatformException catch (e) {
       print("HieuNV Failed: '${e.message}");
     }
